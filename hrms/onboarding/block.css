@@ -1,0 +1,506 @@
+/* Frappe HR onboarding block — styled on the frappe-ui / Espresso token system
+   (--ink-* foreground, --surface-* backgrounds, --outline-* borders).
+   These tokens flip automatically for dark mode, so no theme forking needed. */
+
+:host {
+	--c-surface: var(--surface-white, #fff);
+	--c-subtle: var(--surface-gray-1, #f8f8f8);
+	--c-subtle-2: var(--surface-gray-2, #f3f3f3);
+	--c-border: var(--outline-gray-1, #ededed);
+	--c-border-2: var(--outline-gray-2, #e2e2e2);
+	--c-heading: var(--ink-gray-9, #0f0f0f);
+	--c-text: var(--ink-gray-8, #171717);
+	--c-body: var(--ink-gray-7, #383838);
+	--c-muted: var(--ink-gray-5, #7c7c7c);
+	--c-faint: var(--ink-gray-4, #999999);
+	--c-accent: var(--ink-gray-8, #171717);
+
+	--c-blue-fill: var(--surface-blue-2, #e6f4ff);
+	--c-blue-ink: var(--ink-blue-7, #077ddf);
+	--c-green-fill: var(--surface-green-2, #e4faeb);
+	--c-green-ink: var(--ink-green-7, #268c5c);
+	--c-green-solid: var(--ink-green-6, #43ac79);
+	--c-purple-fill: var(--surface-purple-2, #f6e9ff);
+	--c-purple-ink: var(--ink-purple-7, #8e49ca);
+
+	--r-card: 10px;
+	--r-md: 8px;
+	--r-sm: 6px;
+}
+
+.hr-onb {
+	font-family: var(--font-stack, "Inter", sans-serif);
+	color: var(--c-text);
+	margin-bottom: 20px;
+}
+
+/* ---- header ---- */
+.onb-head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 24px;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+.onb-head-text {
+	max-width: 64ch;
+}
+.onb-title {
+	font-size: 19px;
+	font-weight: 600;
+	color: var(--c-heading);
+	margin: 0 0 5px;
+	letter-spacing: -0.011em;
+}
+.onb-sub {
+	font-size: 13px;
+	color: var(--c-muted);
+	margin: 0;
+	line-height: 1.5;
+}
+
+.onb-overall {
+	display: flex;
+	align-items: baseline;
+	gap: 6px;
+	flex-wrap: wrap;
+	min-width: 132px;
+}
+.onb-overall-fig {
+	font-size: 19px;
+	font-weight: 600;
+	color: var(--c-heading);
+	font-variant-numeric: tabular-nums;
+}
+.onb-overall-label {
+	font-size: 12px;
+	color: var(--c-muted);
+}
+.onb-overall-track {
+	flex-basis: 100%;
+	height: 6px;
+	border-radius: 999px;
+	overflow: hidden;
+	background: var(--surface-gray-3, #ededed);
+	margin-top: 7px;
+}
+.onb-overall-fill {
+	display: block;
+	height: 100%;
+	width: 0;
+	border-radius: 999px;
+	background: var(--c-accent);
+	transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- grid ---- */
+.onb-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+@media (max-width: 991px) {
+	.onb-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+@media (max-width: 640px) {
+	.onb-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.onb-card {
+	display: flex;
+	flex-direction: column;
+	gap: 11px;
+	text-align: left;
+	background: var(--c-surface);
+	border: 1px solid var(--c-border);
+	border-radius: var(--r-card);
+	padding: 15px 16px;
+	cursor: pointer;
+	position: relative;
+	font-family: inherit;
+	color: inherit;
+	transition:
+		border-color 0.12s,
+		box-shadow 0.12s;
+}
+.onb-card:hover {
+	border-color: var(--c-border-2);
+	box-shadow:
+		0 1px 2px rgba(0, 0, 0, 0.04),
+		0 4px 12px rgba(0, 0, 0, 0.06);
+}
+.onb-card:focus-visible {
+	outline: 2px solid var(--c-blue-ink);
+	outline-offset: 2px;
+}
+
+.onb-card-top {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+}
+.onb-ico {
+	width: 34px;
+	height: 34px;
+	flex: none;
+	border-radius: var(--r-md);
+	display: grid;
+	place-items: center;
+	background: var(--c-subtle-2);
+	color: var(--c-body);
+}
+.onb-ico svg {
+	width: 18px;
+	height: 18px;
+}
+.onb-card.done .onb-ico {
+	background: var(--c-green-fill);
+	color: var(--c-green-ink);
+}
+.onb-card-name {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--c-heading);
+	margin: 0;
+	letter-spacing: -0.006em;
+}
+.onb-card-desc {
+	font-size: 12.5px;
+	color: var(--c-muted);
+	margin: 2px 0 0;
+	line-height: 1.45;
+}
+
+.onb-shared {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 11.5px;
+	color: var(--c-muted);
+	font-weight: 500;
+}
+.onb-shared svg {
+	width: 12px;
+	height: 12px;
+	flex: none;
+	color: var(--c-faint);
+}
+.onb-shared.all-done {
+	color: var(--c-green-ink);
+}
+.onb-shared.all-done svg {
+	color: var(--c-green-ink);
+}
+
+.onb-card-foot {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: auto;
+}
+.onb-mini-track {
+	flex: 1;
+	height: 5px;
+	border-radius: 999px;
+	overflow: hidden;
+	background: var(--surface-gray-3, #ededed);
+}
+.onb-mini-fill {
+	display: block;
+	height: 100%;
+	width: 0;
+	border-radius: 999px;
+	background: var(--c-accent);
+	transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.onb-card.done .onb-mini-fill {
+	background: var(--c-green-solid);
+}
+.onb-foot-label {
+	font-size: 11.5px;
+	font-weight: 500;
+	color: var(--c-muted);
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+.onb-card.in-progress .onb-foot-label {
+	color: var(--c-body);
+}
+.onb-card.done .onb-foot-label {
+	color: var(--c-green-ink);
+}
+.onb-foot-label svg {
+	width: 13px;
+	height: 13px;
+}
+
+.onb-arrow {
+	position: absolute;
+	top: 15px;
+	right: 14px;
+	color: var(--c-faint);
+	opacity: 0;
+	transition:
+		opacity 0.12s,
+		transform 0.12s;
+}
+.onb-card:hover .onb-arrow {
+	opacity: 1;
+	transform: translateX(2px);
+}
+.onb-arrow svg {
+	width: 15px;
+	height: 15px;
+}
+
+/* ---- slide-over panel ---- */
+.onb-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(15, 15, 15, 0.4);
+	z-index: 1030;
+	opacity: 0;
+	transition: opacity 0.22s;
+}
+.onb-overlay.show {
+	opacity: 1;
+}
+.onb-panel {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 440px;
+	max-width: 92vw;
+	z-index: 1031;
+	background: var(--surface-modal, var(--c-surface));
+	border-left: 1px solid var(--c-border);
+	box-shadow: -12px 0 44px rgba(15, 15, 15, 0.13);
+	display: flex;
+	flex-direction: column;
+	transform: translateX(100%);
+	transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.onb-panel.show {
+	transform: translateX(0);
+}
+.onb-x {
+	position: absolute;
+	top: 14px;
+	right: 16px;
+	background: none;
+	border: 0;
+	cursor: pointer;
+	color: var(--c-muted);
+	padding: 6px;
+	border-radius: var(--r-sm);
+	line-height: 0;
+}
+.onb-x:hover {
+	background: var(--c-subtle-2);
+	color: var(--c-text);
+}
+.onb-x svg {
+	width: 18px;
+	height: 18px;
+}
+
+.onb-panel-head {
+	padding: 20px 22px 16px;
+	border-bottom: 1px solid var(--c-border);
+}
+.onb-crumb {
+	font-size: 12px;
+	color: var(--c-muted);
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 12px;
+}
+.onb-crumb-sep {
+	color: var(--c-faint);
+}
+.onb-panel-title-row {
+	display: flex;
+	align-items: center;
+	gap: 11px;
+}
+.onb-panel-ico {
+	width: 34px;
+	height: 34px;
+	flex: none;
+	border-radius: var(--r-md);
+	display: grid;
+	place-items: center;
+	background: var(--c-subtle-2);
+	color: var(--c-body);
+}
+.onb-panel-ico svg {
+	width: 18px;
+	height: 18px;
+}
+.onb-panel-title {
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--c-heading);
+	margin: 0;
+}
+.onb-panel-prog {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 15px;
+}
+.onb-panel-prog .onb-mini-track {
+	height: 6px;
+}
+.onb-panel-prog .onb-mini-fill {
+	background: var(--c-accent);
+}
+.onb-panel-prog .onb-count {
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--c-muted);
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+
+.onb-panel-body {
+	flex: 1;
+	overflow-y: auto;
+	padding: 18px 22px;
+}
+.onb-intro {
+	font-size: 13px;
+	color: var(--c-muted);
+	margin: 0 0 14px;
+	line-height: 1.5;
+}
+
+.onb-journey {
+	display: flex;
+	flex-direction: column;
+}
+.onb-step {
+	display: flex;
+	gap: 12px;
+	align-items: flex-start;
+	padding: 12px 8px;
+	border-top: 1px solid var(--c-border);
+	cursor: pointer;
+	border-radius: var(--r-md);
+	transition: background 0.1s;
+}
+.onb-step:first-child {
+	border-top: 0;
+}
+.onb-step:hover {
+	background: var(--c-subtle);
+}
+.onb-step-check {
+	width: 20px;
+	height: 20px;
+	flex: none;
+	margin-top: 1px;
+	border-radius: 50%;
+	border: 1.5px solid var(--c-border-2);
+	color: transparent;
+	display: grid;
+	place-items: center;
+	transition: all 0.16s;
+}
+.onb-step-check svg {
+	width: 12px;
+	height: 12px;
+}
+.onb-step.done .onb-step-check {
+	background: var(--c-green-solid);
+	border-color: var(--c-green-solid);
+	color: #fff;
+}
+.onb-step-body {
+	flex: 1;
+	min-width: 0;
+}
+.onb-step-name {
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--c-text);
+}
+.onb-step.done .onb-step-name {
+	color: var(--c-muted);
+}
+.onb-step-sub {
+	font-size: 12px;
+	color: var(--c-muted);
+	margin-top: 2px;
+	line-height: 1.45;
+}
+.onb-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	margin-top: 8px;
+	font-size: 11px;
+	font-weight: 500;
+	padding: 2px 7px;
+	border-radius: var(--r-sm);
+	background: var(--c-blue-fill);
+	color: var(--c-blue-ink);
+}
+.onb-tag svg {
+	width: 11px;
+	height: 11px;
+}
+.onb-step.done .onb-tag {
+	background: var(--c-green-fill);
+	color: var(--c-green-ink);
+}
+.onb-tag-dash {
+	background: var(--c-purple-fill);
+	color: var(--c-purple-ink);
+}
+.onb-step.done .onb-tag-dash {
+	background: var(--c-green-fill);
+	color: var(--c-green-ink);
+}
+.onb-carry {
+	color: var(--c-green-ink);
+	font-weight: 500;
+}
+
+.onb-step.dash {
+	border-top: 1px dashed var(--c-border-2);
+	margin-top: 4px;
+}
+.onb-step.dash .onb-step-check {
+	border-style: dashed;
+}
+.onb-step.dash.done .onb-step-check {
+	border-style: solid;
+}
+
+.onb-panel-foot {
+	padding: 14px 22px;
+	border-top: 1px solid var(--c-border);
+}
+.onb-panel-foot .btn {
+	width: 100%;
+	justify-content: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hr-onb *,
+	.onb-panel,
+	.onb-overlay {
+		transition: none !important;
+	}
+}
