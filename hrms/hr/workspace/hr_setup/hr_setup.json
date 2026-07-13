@@ -13,7 +13,7 @@
  "doctype": "Workspace",
  "for_user": "",
  "hide_custom": 0,
- "icon": "hr",
+ "icon": "briefcase-business",
  "idx": 1,
  "is_hidden": 0,
  "label": "HR Setup",
@@ -391,7 +391,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-06-14 13:43:50.847257",
+ "modified": "2026-07-03 13:43:50.847257",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "HR Setup",
@@ -408,7 +408,7 @@
   {
    "child": 0,
    "collapsible": 1,
-   "icon": "home",
+   "icon": "house",
    "indent": 0,
    "keep_closed": 0,
    "label": "Home",
@@ -447,7 +447,7 @@
   {
    "child": 0,
    "collapsible": 1,
-   "icon": "organization",
+   "icon": "building-2",
    "indent": 0,
    "keep_closed": 0,
    "label": "Organizational Chart",
